@@ -1,0 +1,57 @@
+<div class="container w-75">
+    <form class="row mt-4" [formGroup]="requirementsForm" (ngSubmit)="onSubmit()">
+        <div class="shadow-sm p-5 my-5 bg-body rounded">
+            <h1 class="text-center mb-5">Service Agreement</h1>
+
+            <div class="mb-3 row">
+                <label for="customerName" class="col-sm-3 col-form-label">Your name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="customerName" formControlName="customerName" value="">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="customerEmail" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" id="customerEmail" formControlName="customerEmail"
+                        value="">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="customerPhone" class="col-sm-3 col-form-label">Contact number</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="customerPhone" id="customerPhone">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="customerLocation" class="col-sm-3 col-form-label">Location</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="customerLocation" id="customerLocation">
+                </div>
+            </div>
+            <div id="container-requirement" #containerRequirement>
+                <h4 class="my-5">Requirements</h4>
+                <div *ngFor="let requirement of requirements; let i=index ">
+                    <app-requirement (updateRequirement)="updateRequirement($event)"
+                        [requirementChild]="requirement" [index]="i" (removeReq)="removeRequirement($event)"></app-requirement>
+                </div>
+            </div>
+            
+            <div class="mb-5">
+                <button type="button" id="add-requirement" class="btn btn-primary float-end"
+                    (click)="addRequirement()">Add requirement</button>
+            </div>
+            <div *ngIf="addRequirementError!=''" class="alert alert-warning" role="alert">
+                {{addRequirementError}}
+            </div>
+            <br>
+            <div class="my-3">
+                <app-signature></app-signature>
+            </div>
+            <br>
+            <div class="my-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success px-5 py-2 m-auto">Send & Generate PDF</button>
+            </div>
+        </div>
+    </form>
+    
+</div>

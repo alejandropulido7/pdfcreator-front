@@ -1,0 +1,7 @@
+<div class="d-flex-inline justify-content-end w-100 my-3">
+<p><strong>Signature with mouse</strong></p>
+<canvas #canvas width="400" height="150" style="border: 1px solid black;" (mousedown)="startDrawing($event)"
+    (mousemove)="draw($event)" (mouseup)="endDrawing()"></canvas>
+    <br>
+    <button (click)="clearCanvas($event)" class="btn btn-sm btn-light col-sm-1">Undo</button>
+</div>
