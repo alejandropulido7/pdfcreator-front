@@ -13,6 +13,7 @@ import { AgreementService } from 'src/app/services/agreement.service';
 export class FormComponent{
   requirements: Requirement[] = [];
   addRequirementError:string = '';
+  signImage!: string;
 
   requirementsForm = new FormGroup({
     customerName: new FormControl('', Validators.required),
@@ -71,6 +72,14 @@ export class FormComponent{
     return true;
   }
 
+  loadImage(image: string){
+   this.signImage = image;
+  }
+
+  getImg(event: Event){
+    console.log(event);
+  }
+
   onSubmit():void{
     console.log(this.requirementsForm.value);    
     const { customerEmail, customerLocation, customerName, customerPhone} = this.requirementsForm.getRawValue();
@@ -83,7 +92,8 @@ export class FormComponent{
         customerName: customerName,
         customerLocation: customerLocation,
         customerPhone: customerPhone,
-        requirements: this.requirements
+        requirements: this.requirements,
+        sign: this.signImage
       }
     }else {
       this.addRequirementError='Fill the form correctly';

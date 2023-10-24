@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-signature',
@@ -8,6 +8,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class SignatureComponent {
 
   @ViewChild('canvas', { static: true }) canvas!: ElementRef;
+  @Output() signature = new EventEmitter<string>();
 
   private context!: CanvasRenderingContext2D;
   private drawing: boolean = false;
@@ -45,6 +46,17 @@ export class SignatureComponent {
 
   endDrawing(): void {
     this.drawing = false;
+    const image = this.canvas.nativeElement.toDataURL('image/png');
+    this.signature.emit(image);
+  }
+
+  async convertBlob(image: any){
+    try {
+      return await fetch(image);
+    } catch (error) {
+      console.log(error)
+      return ''
+    }
   }
 
   clearCanvas(event: Event): void {
@@ -52,11 +64,11 @@ export class SignatureComponent {
     this.context.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
   }
 
-  downloadCanvas(): void {
-    const image = this.canvas.nativeElement.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = image;
-    link.download = 'dibujo.png';
-    link.click();
-  }
+  // apply(): void {
+    
+    // const link = document.createElement('a');
+    // link.href = image;
+    // link.download = 'dibujo.png';
+    // link.click();
+  // }
 }

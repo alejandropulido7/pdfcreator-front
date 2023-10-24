@@ -7,4 +7,5 @@ export interface ServiceAgreement {
     customerName: string|null;
     customerPhone: string|null;
     requirements: Requirement[];
+    sign: any;
 }

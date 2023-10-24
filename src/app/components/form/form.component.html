@@ -1,5 +1,5 @@
 <div class="container w-75">
-    <form class="row mt-4" [formGroup]="requirementsForm" (ngSubmit)="onSubmit()">
+    <form class="row mt-4" [formGroup]="requirementsForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="shadow-sm p-5 my-5 bg-body rounded">
             <h1 class="text-center mb-5">Service Agreement</h1>
 
@@ -45,7 +45,7 @@
             </div>
             <br>
             <div class="my-3">
-                <app-signature></app-signature>
+                <app-signature (signature)="loadImage($event)"></app-signature>
             </div>
             <br>
             <div class="my-3 d-flex justify-content-center">

@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environment/environment';
 import { ServiceAgreement } from '../models/serviceAgreement';
 import { Observable } from 'rxjs';
-import { Pdf } from '../models/pdf';
 import { Constants } from '../shared/constants';
 
 @Injectable({
