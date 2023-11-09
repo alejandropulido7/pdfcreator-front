@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Requirement } from 'src/app/models/requirement';
 import { ServiceAgreement } from 'src/app/models/serviceAgreement';
 import { AgreementService } from 'src/app/services/agreement.service';
@@ -22,7 +23,7 @@ export class FormComponent{
     customerLocation: new FormControl('')
   });
   
-  constructor(private agreementService: AgreementService) {  
+  constructor(private agreementService: AgreementService, cookie: CookieService) {  
     this.requirements.push({
       index: 0,
       name: '',
@@ -30,6 +31,8 @@ export class FormComponent{
       priority: '',
       buttonRemove: false
     });
+
+    console.log(cookie.get('token'));
   }
 
   updateRequirement(requirement: Requirement){

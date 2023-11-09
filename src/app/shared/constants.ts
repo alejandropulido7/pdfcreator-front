@@ -7,4 +7,6 @@ export class Constants {
         'Content-Type': 'application/pdf',
       })
     };
+    public static ROLE_ADMIN = 'admin';
+    public static ROLE_USER = 'user';
   }

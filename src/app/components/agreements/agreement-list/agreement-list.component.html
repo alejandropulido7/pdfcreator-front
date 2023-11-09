@@ -1,1 +1,30 @@
-<p>agreement-list works!</p>
+<div class="container my-5 shadow-sm p-3 mb-5 bg-body rounded">
+    <h2 class="mb-5 text-center">Customers Agreements</h2>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Location</th>
+              <th scope="col">Requirements</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let agreement of listAgreements">
+              <th scope="row">{{agreement.customerName}}</th>
+              <td>{{agreement.customerEmail}}</td>
+              <td>{{agreement.customerPhone}}</td>
+              <td>{{agreement.customerLocation}}</td>
+              <td><button class="btn btn-link">{{agreement.requirements.length}}</button></td>
+              <td>
+                <button class="btn btn-link"><mat-icon>picture_as_pdf</mat-icon></button>
+                <button class="btn btn-link"><mat-icon>mail</mat-icon></button>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+    </table>
+</div>
+
