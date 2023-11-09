@@ -12,7 +12,7 @@ export class AgreementService {
   constructor(private readonly http: HttpClient) { }
 
   sendAndGeneratePdf(serviceAgreement: ServiceAgreement): Observable<any>{
-    const URL = `${environment.BACKEND_URL}/api/pdf`;
+    const URL = `${environment.BACKEND_URL}/api/agreement`;
     return this.http.post(URL, serviceAgreement, {responseType: "blob"});
   }
 
