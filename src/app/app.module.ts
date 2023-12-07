@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalErrorComponent } from './components/utils/modal-error/modal-error.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
+import { ModalSuccessComponent } from './components/utils/modal-success/modal-success.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {MatIconModule} from '@angular/material/icon';
     SignatureComponent,
     AgreementListComponent,
     AgreementComponent,
-    ModalErrorComponent    
+    ModalErrorComponent,
+    ModalSuccessComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'agreements',
     component: AgreementListComponent,
-    canActivate: [loginGuard, adminRoute]
+    canActivate: [loginGuard]
   }
 ];
 

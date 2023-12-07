@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Requirement } from 'src/app/models/requirement';
 import { ServiceAgreement } from 'src/app/models/serviceAgreement';
 import { AgreementService } from 'src/app/services/agreement.service';
+import { ModalErrorComponent } from '../utils/modal-error/modal-error.component';
+import { ModalSuccessComponent } from '../utils/modal-success/modal-success.component';
 
 @Component({
   selector: 'app-form',
@@ -18,12 +21,14 @@ export class FormComponent{
 
   requirementsForm = new FormGroup({
     customerName: new FormControl('', Validators.required),
-    customerEmail: new FormControl(''),
+    customerEmail: new FormControl('hapulido22@gmail.com'),
     customerPhone: new FormControl(''),
     customerLocation: new FormControl('')
   });
   
-  constructor(private agreementService: AgreementService, cookie: CookieService) {  
+  constructor(private agreementService: AgreementService, 
+    cookie: CookieService,
+    private dialog: MatDialog) {  
     this.requirements.push({
       index: 0,
       name: '',
@@ -32,15 +37,12 @@ export class FormComponent{
       buttonRemove: false
     });
 
-    console.log(cookie.get('token'));
   }
 
   updateRequirement(requirement: Requirement){
-    console.log(requirement.index);
     this.requirements[requirement.index].name = requirement.name;
     this.requirements[requirement.index].description = requirement.description;
     this.requirements[requirement.index].priority = requirement.priority;
-    console.log(this.requirements);
   }
 
   addRequirement(){
@@ -62,7 +64,6 @@ export class FormComponent{
     const newArrayRequirements = this.requirements.filter(req => req.index!=requirement.index);
     newArrayRequirements.map((req, i) => req.index=i);
     this.requirements = newArrayRequirements;
-    console.log(this.requirements)
   }
 
   validateFieldsRequirement(): boolean{
@@ -83,8 +84,7 @@ export class FormComponent{
     console.log(event);
   }
 
-  onSubmit():void{
-    console.log(this.requirementsForm.value);    
+  onSubmit():void{    
     const { customerEmail, customerLocation, customerName, customerPhone} = this.requirementsForm.getRawValue();
     let serviceAgreement!:ServiceAgreement;
 
@@ -102,13 +102,22 @@ export class FormComponent{
       this.addRequirementError='Fill the form correctly';
     }
     if(serviceAgreement != undefined){
-      this.agreementService.sendAndGeneratePdf(serviceAgreement).subscribe((pdf) => {
-        try {
-          const url = window.URL.createObjectURL(pdf);
-          window.open(url, '_blank');
-        } catch (e) {
-          console.error('BlobToSaveAs error', e);
-        }
+      this.agreementService.saveAgreement(serviceAgreement).subscribe((response) => {
+        this.dialog.open(ModalSuccessComponent, {
+          data: {
+            message: response.message,
+            email: serviceAgreement.customerEmail,
+            id: response.id
+          },
+          width: '300px'
+        });
+      }, (error) => {
+        this.dialog.open(ModalErrorComponent, {
+          data: {
+            title: 'Error',
+            message: error.error.errors[0].msg
+          }
+        }); 
       });
     }
   }

@@ -20,7 +20,7 @@ export const adminRoute = () => {
     const dialog = inject(MatDialog);
     if(cookie.get("role") == 'user'){
         dialog.open(ModalErrorComponent, {data: {
-            errorMessage: 'Not authorized'
+            message: 'Not authorized'
         }})
         return false;
     }    

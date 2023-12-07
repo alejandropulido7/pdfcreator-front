@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h2 mat-dialog-title>Success</h2> <button mat-button mat-dialog-close class="btn-close"></button>
+    </div>
+    <div mat-dialog-content>
+        {{data.message}}
+    </div>
+    <div mat-dialog-actions align="end" class="d-flex justify-content-between flex-column">
+        <button class="col-12 my-3 btn btn-success">Download agreement</button>
+        <button class="col-12 my-3 btn btn-info" *ngIf="!_enableEmail" (click)="enableEmail(data.email)">Sent email <mat-icon>mail</mat-icon></button>
+
+        <div *ngIf="_enableEmail" class="my-3 col-12 d-flex">
+            <input class="form-control" type="email"  value="{{data.email}}" [(ngModel)]="emailCustomer">
+            <button class="btn btn-sm btn-info" (click)="sentEmail(data.id)"><mat-icon>send</mat-icon></button>
+        </div>
+           
+    </div>
+</div>
+

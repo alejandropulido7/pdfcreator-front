@@ -1,55 +1,60 @@
-<div class="container w-75">
-    <form class="row mt-4" [formGroup]="requirementsForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-        <div class="shadow-sm p-5 my-5 bg-body rounded">
-            <h1 class="text-center mb-5">Service Agreement</h1>
-
-            <div class="mb-3 row">
-                <label for="customerName" class="col-sm-3 col-form-label">Your name</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="customerName" formControlName="customerName" value="">
+<div class="container w-90">
+    <form class="row mt-4" [formGroup]="requirementsForm" (ngSubmit)="onSubmit()">
+        <div>
+            <div class="row d-flex justify-content-around">
+                <h1 class="text-center mb-5 fw-bold">Service Agreement</h1>
+                <div class="col-5 shadow-sm p-5">
+                    <h4 class="mb-3 text-center">Your information</h4>
+                    <div class="mb-3 row">
+                        <label for="customerName" class="col-sm-3 col-form-label">Your name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="customerName" formControlName="customerName" value="">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="customerEmail" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="customerEmail" formControlName="customerEmail"
+                                value="">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="customerPhone" class="col-sm-3 col-form-label">Contact number</label>
+                        <div class="col-sm-9">
+                            <input type="phone" class="form-control" formControlName="customerPhone" id="customerPhone">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="customerLocation" class="col-sm-3 col-form-label">Location</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" formControlName="customerLocation" id="customerLocation">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="customerEmail" class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-9">
-                    <input type="email" class="form-control" id="customerEmail" formControlName="customerEmail"
-                        value="">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="customerPhone" class="col-sm-3 col-form-label">Contact number</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" formControlName="customerPhone" id="customerPhone">
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="customerLocation" class="col-sm-3 col-form-label">Location</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" formControlName="customerLocation" id="customerLocation">
-                </div>
-            </div>
-            <div id="container-requirement" #containerRequirement>
-                <h4 class="my-5">Requirements</h4>
-                <div *ngFor="let requirement of requirements; let i=index ">
-                    <app-requirement (updateRequirement)="updateRequirement($event)"
-                        [requirementChild]="requirement" [index]="i" (removeReq)="removeRequirement($event)"></app-requirement>
+                <div class="col-6 shadow-sm p-5">
+                    <div id="container-requirement" #containerRequirement>
+                        <h4 class="mb-3">Requirements</h4>
+                        <div *ngFor="let requirement of requirements; let i=index ">
+                            <app-requirement (updateRequirement)="updateRequirement($event)"
+                                [requirementChild]="requirement" [index]="i" (removeReq)="removeRequirement($event)"></app-requirement>
+                        </div>
+                    </div>                
+                    <div class="mb-5">
+                        <button type="button" id="add-requirement" class="btn btn-primary float-end"
+                            (click)="addRequirement()">Add requirement</button>
+                    </div>
+                    <div *ngIf="addRequirementError!=''" class="alert alert-warning" role="alert">
+                        {{addRequirementError}}
+                    </div>
                 </div>
             </div>
             
-            <div class="mb-5">
-                <button type="button" id="add-requirement" class="btn btn-primary float-end"
-                    (click)="addRequirement()">Add requirement</button>
-            </div>
-            <div *ngIf="addRequirementError!=''" class="alert alert-warning" role="alert">
-                {{addRequirementError}}
-            </div>
-            <br>
-            <div class="my-3">
+            <div class="my-3 shadow-sm p-5  d-flex justify-content-center">
                 <app-signature (signature)="loadImage($event)"></app-signature>
             </div>
             <br>
             <div class="my-3 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success px-5 py-2 m-auto">Send & Generate PDF</button>
+                <button type="submit" class="btn btn-success px-5 py-2 m-auto">Register agreement</button>
             </div>
         </div>
     </form>

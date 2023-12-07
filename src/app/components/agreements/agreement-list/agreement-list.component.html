@@ -1,8 +1,9 @@
-<div class="container my-5 shadow-sm p-3 mb-5 bg-body rounded">
+<div class="container my-5 shadow-sm p-5 mb-5 bg-body rounded">
     <h2 class="mb-5 text-center">Customers Agreements</h2>
     <table class="table table-hover table-striped">
         <thead>
             <tr>
+              <th scope="col">Date</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Phone</th>
@@ -13,6 +14,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let agreement of listAgreements">
+              <td>{{agreement.dateAgreement |date:"short"}}</td>
               <th scope="row">{{agreement.customerName}}</th>
               <td>{{agreement.customerEmail}}</td>
               <td>{{agreement.customerPhone}}</td>

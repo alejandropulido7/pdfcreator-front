@@ -35,7 +35,6 @@ export class LoginComponent {
       password: this.loginForm.controls['password'].value
     }
     this.authService.login(login).subscribe((res) => {
-      console.log(res);
       this.cookieService.set('token', res.token);
       this.cookieService.set('role', res.role);
       const role = this.loginForm.controls['btnRole'].value;
@@ -47,16 +46,15 @@ export class LoginComponent {
       if( res.role == Constants.ROLE_USER){
         if(role == Constants.ROLE_ADMIN){
           this.dialog.open(ModalErrorComponent, {
-            data: {errorMessage: 'User not authorized'}
+            data: {message: 'User not authorized'}
           });  
         };
         this.router.navigate(['form']);
       }
       
     }, (error) => {
-      console.log(error);
       this.dialog.open(ModalErrorComponent, {
-        data: {errorMessage: error.error.message}
+        data: {message: error.error.message}
       });      
     });
 
@@ -65,6 +63,5 @@ export class LoginComponent {
 
   getCookie() {
     const cookie = this.cookieService.get('token');
-    console.log(cookie);
   }
 }
