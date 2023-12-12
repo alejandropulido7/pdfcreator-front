@@ -1,22 +1,20 @@
-<div class="shadow-none p-3 mb-3 bg-light rounded" #rowRequirement>
-    <div class="d-flex justify-content-between col-sm-12 flex-wrap">
-      <div class="mb-3 row col-sm-12">
-        <label class="form-label">Name of requirement</label>
-        <div>
-          <input type="text" (blur)="saveRequirement()" class="form-control" name="requirementName-{{index}}" id="requirementName" [(ngModel)]="name" [value]="requirementChild.name">
-        </div>
-      </div>
-      <div class="mb-3 row col-sm-12">
-        <label class="form-label">Priority</label>
-        <div>
-          <input type="text" (blur)="saveRequirement()" class="form-control" name="requirementPriority-{{index}}" id="customerLocation" [(ngModel)]="priority" [value]="requirementChild.priority">
-        </div>
-      </div>
-    </div>
-    <div class="mb-3 row col-sm-12">
-      <label class="form-label">Description</label>
+<div class="mt-10 grid grid-cols-2 gap-4" #rowRequirement>
       <div>
-        <textarea class="form-control" (blur)="saveRequirement()" id="customerLocation" name="requirementDescription-{{index}}" rows="3" [(ngModel)]="description" [value]="requirementChild.description"></textarea>
+        <label class="block text-sm font-medium leading-6 text-gray-900">Name of requirement</label>
+        <div>
+          <input type="text" (blur)="saveRequirement()" name="requirementName-{{index}}" id="requirementName" [(ngModel)]="name" [value]="requirementChild.name" class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+      <div>
+        <label for="requirementPriority-{{index}}" class="block text-sm font-medium leading-6 text-gray-900">Priority</label>
+        <div>
+          <input type="text" (blur)="saveRequirement()" name="requirementPriority-{{index}}" id="customerLocation" [(ngModel)]="priority" [value]="requirementChild.priority" class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        </div>
+      </div>
+    <div class="col-span-2">
+      <label class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+      <div>
+        <textarea (blur)="saveRequirement()" id="customerLocation" name="requirementDescription-{{index}}" rows="3" [(ngModel)]="description" [value]="requirementChild.description" class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
       </div>
     </div>
     <div *ngIf="requirementChild.buttonRemove">

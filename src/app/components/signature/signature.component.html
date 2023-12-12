@@ -1,7 +1,9 @@
 <div class="d-flex-inline justify-content-end w-100 my-3">
-<p><strong>Signature</strong></p>
+<h4 class="text-base font-semibold leading-7 text-gray-500">Sign on square below to legalize the contract</h4>
 <canvas #canvas width="400" height="150" style="border: 1px solid black;" (mousedown)="startDrawing($event)"
     (mousemove)="draw($event)" (mouseup)="endDrawing()"></canvas>
     <br>
-    <button (click)="clearCanvas($event)" class="btn btn-sm btn-light col-sm-2">Undo</button>
+    <div class="flex justify-end">
+        <button (click)="clearCanvas($event)" class="rounded-md bg-neutral-300 px-3 py-2 text-sm font-normal text-white shadow-sm hover:bg-neutral-300">Undo</button>
+    </div>
 </div>

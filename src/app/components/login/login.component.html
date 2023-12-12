@@ -1,24 +1,27 @@
-<div class="container w-50 shadow p-3 my-5 bg-body rounded d-flex flex-column">
-    <form class="m-auto" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <h1 class="text-center">Contracts</h1>
-        <p>Generate a service Agreement through a mock form</p>
-        <div class="mb-3 row">
-        <div class="col-sm-12">
-          <input type="email" class="form-control" id="staticEmail" placeholder="Email" formControlName="email">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <div class="col-sm-12">
-          <input type="password" class="form-control" placeholder="Password" id="inputPassword" formControlName="password">
-        </div>
-      </div>
-      <div class="btn-group m-auto" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="btnRole" formControlName="btnRole" id="btnradio1" value="user" autocomplete="off" checked>
-        <label class="btn btn-outline-primary" for="btnradio1">User</label>      
-        <input type="radio" class="btn-check" name="btnRole"  formControlName="btnRole" id="btnradio2" value="admin" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btnradio2">Admin</label>
-      </div>
-      <br>
-      <button type="submit" class="btn btn-success my-3 px-5 py-2 m-auto">Login</button>
-    </form>
-</div>
+<form class="max-w-sm mx-auto my-9" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h1 class="p-3 text-3xl text-center font-semibold leading-7 text-gray-900">Contracts</h1>
+  <p class="p-3 text-sm text-center font-normal text-gray-400">Generate a service Agreement through a mock form</p>
+  <div class="mb-5">
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+    <input type="email" id="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="test@test.com" formControlName="email" required>
+  </div>
+  <div class="mb-5">
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your password</label>
+    <input type="password" id="password" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" formControlName="password" required>
+  </div>
+  <ul class="items-center my-3 w-full text-sm font-medium text-gray-900 bg-white flex">
+      <li class="w-full">
+          <div class="flex items-center ps-3">
+              <input id="horizontal-list-radio-license" checked type="radio" value="user" name="btnRole" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
+              <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">User</label>
+          </div>
+      </li>
+      <li class="w-full">
+          <div class="flex items-center ps-3">
+              <input id="horizontal-list-radio-id" type="radio" value="admin" name="btnRole" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
+              <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Admin</label>
+          </div>
+      </li>
+  </ul>
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Login</button>
+</form>
