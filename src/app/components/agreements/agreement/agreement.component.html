@@ -1,1 +1,48 @@
-<p>agreement works!</p>
+<div class="max-w-full p-6 bg-white border border-gray-200 rounded-lg shadow-md shadow-slate-300">
+    <h5 class="mb-5 text-2xl font-bold tracking-tight text-gray-900">{{agreement.customerName}} - {{agreement.dateAgreement |date:"short"}}</h5>
+    <ul class="flex md:justify-between gap-5 max-w-full flex-wrap space-y-1 text-gray-500 list-inside border-b border-gray-100 pb-3 mb-3">
+        <li class="flex items-center gap-4"><mat-icon>mail</mat-icon>{{agreement.customerEmail}}</li>
+        <li class="flex items-center gap-4"><mat-icon>phone</mat-icon>{{agreement.customerPhone}}</li>
+        <li class="flex items-center gap-4"><mat-icon>location_on</mat-icon>{{agreement.customerLocation}}</li>
+        <li class="flex items-center gap-4"><mat-icon>request_page</mat-icon>Requirements: {{agreement.requirements.length}}</li>
+    </ul>
+    <div class="flex items-center justify-between">
+        <button (click)="showRequirements()" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+            {{textButtonRequirements}}
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </button>        
+        <div class="flex gap-2">
+            <button (click)="downloadPdf(agreement._id)" matTooltip="Download PDF" class="cursor-pointer inline-flex items-center px-3 py-2 text-sm text-center text-white bg-indigo-300 rounded-lg hover:bg-indigo-200"><mat-icon>picture_as_pdf</mat-icon></button>
+            <button (click)="mailActive(agreement.customerEmail)" matTooltip="Send a mail" class="cursor-pointer inline-flex items-center px-3 py-2 text-sm text-center text-white bg-blue-400 rounded-lg hover:bg-blue-300">
+                <mat-icon>mail</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="activeRequirement" class="transition-shadow" style="transition: all ease-in 1s;">
+        <div *ngFor="let requirement of agreement.requirements">
+            <ul class="border-b border-gray-500 my-2 py-2">
+                <li class="flex gap-1"><span class="block text-sm font-medium leading-6 text-gray-900">Requirement: </span>{{requirement.name}}</li>
+                <li class="flex gap-1"><span class="block text-sm font-medium leading-6 text-gray-900">Priority: </span>{{requirement.priority}}</li>
+                <li class="flex gap-1"><span class="block text-sm font-medium leading-6 text-gray-900">Description: </span>{{requirement.description}}</li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="activateEmail" class="my-3 flex gap-3 border-t border-gray-100 mt-2 pt-2">
+        <input placeholder="One who?" class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+         type="email"  value="{{emailCustomer}}" [(ngModel)]="emailCustomer">
+        <button class="w-md rounded-md bg-indigo-600 px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-500" (click)="sentEmail(agreement._id)"><mat-icon>send</mat-icon></button>
+    </div>
+    <div *ngIf="alert['sendMail']!=''" class="flex {{alert['colorAlert']}} justify-between rounded-lg p-4 mb-4 text-sm text-{{alert['colorAlert']}}-700" role="alert">
+        <div>
+            <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="font-medium">Success! </span> 
+            <span>{{alert['sendMail']}}</span>
+        </div>        
+        <span class="float-right" (click)="clearAlert()"><mat-icon>close</mat-icon></span>
+    </div>
+
+    
+    
+</div>

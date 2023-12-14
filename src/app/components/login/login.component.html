@@ -1,27 +1,39 @@
-<form class="max-w-sm mx-auto my-9" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <h1 class="p-3 text-3xl text-center font-semibold leading-7 text-gray-900">Contracts</h1>
-  <p class="p-3 text-sm text-center font-normal text-gray-400">Generate a service Agreement through a mock form</p>
-  <div class="mb-5">
-    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
-    <input type="email" id="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="test@test.com" formControlName="email" required>
-  </div>
-  <div class="mb-5">
-    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your password</label>
-    <input type="password" id="password" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" formControlName="password" required>
-  </div>
-  <ul class="items-center my-3 w-full text-sm font-medium text-gray-900 bg-white flex">
-      <li class="w-full">
-          <div class="flex items-center ps-3">
-              <input id="horizontal-list-radio-license" checked type="radio" value="user" name="btnRole" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
-              <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">User</label>
+<div class="min-h-screen bg-indigo-600 flex justify-self-auto">
+  <div class="container p-10 self-center grid md:grid-cols-2 sm:grid-cols-1 mx-auto h-auto shadow-sm rounded-md shadow-orange-100">
+    <div class="text-white md:w-2/3 self-center mx-auto">
+      <h1 class="text-5xl font-bold">Service agreements</h1>
+      <p class="py-6">This app has been designed to generate a PDF with a data form (requesting requirements), it has the possibility to send for email.</p>
+    </div>
+    <form class="mx-auto my-9 p-7 rounded bg-white h-auto" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mt-6 flex bg-blue-100 rounded-lg p-4 mb-4 text-sm text-blue-700" role="alert">
+          <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <div>
+              <span class="font-medium"></span>To login, request the test user and password
           </div>
-      </li>
-      <li class="w-full">
-          <div class="flex items-center ps-3">
-              <input id="horizontal-list-radio-id" type="radio" value="admin" name="btnRole" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
-              <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Admin</label>
-          </div>
-      </li>
-  </ul>
-  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Login</button>
-</form>
+      </div>
+      <div class="mb-5">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+        <input type="email" id="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="test@test.com" formControlName="email" required>
+      </div>
+      <div class="mb-5">
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your password</label>
+        <input type="password" id="password" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" formControlName="password" required>
+      </div>
+      <ul class="items-center my-3 w-full text-sm font-medium text-gray-900 bg-white flex">
+          <li class="w-full">
+              <div class="flex items-center ps-3">
+                  <input id="horizontal-list-radio-license" checked type="radio" value="user" name="btnRole" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
+                  <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">User</label>
+              </div>
+          </li>
+          <li class="w-full">
+              <div class="flex items-center ps-3">
+                  <input id="horizontal-list-radio-id" type="radio" value="admin" name="btnRole" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
+                  <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Admin</label>
+              </div>
+          </li>
+      </ul>
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Login</button>
+    </form>
+  </div>
+</div>

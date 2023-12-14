@@ -1,46 +1,8 @@
-<div class="relative overflow-x-auto mt-10">
-  <div class="w-3/4 mx-auto">
-  <table class="w-full text-sm text-left rtl:text-right ">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-200">
-          <tr>
-              <th scope="col" class="px-6 py-3">
-                Date
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Name
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Email
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Phone
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Location
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Requirements
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Actions
-              </th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let agreement of listAgreements" class="bg-white odd:bg-white even:bg-gray-50">
-              <td class="px-6 py-4">{{agreement.dateAgreement |date:"short"}}</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">{{agreement.customerName}}</th>
-              <td class="px-6 py-4">{{agreement.customerEmail}}</td>
-              <td class="px-6 py-4">{{agreement.customerPhone}}</td>
-              <td class="px-6 py-4">{{agreement.customerLocation}}</td>
-              <td class="px-6 py-4"><button class="cursor-pointer text-indigo-500">{{agreement.requirements.length}}</button></td>
-              <td class="px-6 py-4">
-                <button class="cursor-pointer text-indigo-500"><mat-icon>picture_as_pdf</mat-icon></button>
-                <button class="cursor-pointer text-indigo-500"><mat-icon>mail</mat-icon></button>
-              </td>
-              <td></td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+
+<div class="container my-8 md:w-3/4 mx-auto p-3">
+  <div class="grid grid-cols-1 gap-4">
+    <div *ngFor="let agreement of listAgreements">
+      <app-agreement [agreement]="agreement" ></app-agreement>
+    </div>
+  </div>
 </div>

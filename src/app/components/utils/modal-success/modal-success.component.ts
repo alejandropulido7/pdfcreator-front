@@ -30,15 +30,10 @@ export class ModalSuccessComponent {
   }
 
   sentEmail(id: string){
-    console.log(id);
-    console.log(this.emailCustomer);
     this.dialogRefCurrent.close();
-    let loading = this.dialog.open(ModalLoadingComponent, {
-      width: '200px',
-      height: '200px'
-    });
+    this.serviceAgreement.renderLoading(true);
     this.serviceAgreement.sentEmail(id, this.emailCustomer).subscribe((response) => {
-      loading.close();
+      this.serviceAgreement.renderLoading(false);
       console.log(response);
       let dialogRef = this.dialog.open(ModalErrorComponent, {
         data: {
@@ -47,14 +42,35 @@ export class ModalSuccessComponent {
         }
       });
       dialogRef.afterClosed().subscribe(() => {
-        console.log("MODAL ERROR CERRADO");
         this.router.navigate(['agreements']);
       });
     }, (error) => {
       console.log(error);
     });
+  }
 
-    
-    
+  downloadPdf(id: string){
+    this.dialogRefCurrent.close();
+    this.serviceAgreement.renderLoading(true);
+    this.serviceAgreement.downloadPdf(id).subscribe((pdf) => {
+      console.log(pdf);
+      this.serviceAgreement.renderLoading(false);
+      try {
+        this.router.navigate(['agreements']);
+        const url = window.URL.createObjectURL(pdf);
+        window.open(url, '_blank');
+      } catch (e) {
+        console.error('BlobToSaveAs error', e);
+        let dialogRef = this.dialog.open(ModalErrorComponent, {
+          data: {
+            title: 'Error',
+            message: 'Dont able to generate PDF. Try again at view of requirements'
+          }
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.router.navigate(['agreements']);
+        });
+      }
+    })
   }
 }

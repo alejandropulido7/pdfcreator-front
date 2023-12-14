@@ -19,6 +19,9 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
 import {MatIconModule} from '@angular/material/icon';
 import { ModalSuccessComponent } from './components/utils/modal-success/modal-success.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule, 
+    MatMenuModule,
+    MatTooltipModule
   ],
   providers: [
     CookieService,

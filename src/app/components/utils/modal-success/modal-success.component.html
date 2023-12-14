@@ -1,17 +1,18 @@
 <div class="container">
-    <div class="d-flex justify-content-between">
-        <h2 mat-dialog-title>Success</h2> <button mat-button mat-dialog-close class="btn-close"></button>
+    <div class="flex justify-between">
+        <h2 mat-dialog-title>Success</h2> <button mat-button mat-dialog-close><mat-icon>close</mat-icon></button>
     </div>
     <div mat-dialog-content>
         {{data.message}}
     </div>
-    <div mat-dialog-actions align="end" class="d-flex justify-content-between flex-column">
-        <button class="col-12 my-3 btn btn-success">Download agreement</button>
-        <button class="col-12 my-3 btn btn-info" *ngIf="!_enableEmail" (click)="enableEmail(data.email)">Sent email <mat-icon>mail</mat-icon></button>
+    <div mat-dialog-actions align="end" class="flex justify-between flex-col gap-2">
+        <button class="rounded-md bg-teal-600 px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-teal-500" (click)="downloadPdf(data.id)">Download agreement</button>
+        <button class="rounded-md bg-indigo-600 px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-500" *ngIf="!_enableEmail" (click)="enableEmail(data.email)">Sent email <mat-icon>mail</mat-icon></button>
 
-        <div *ngIf="_enableEmail" class="my-3 col-12 d-flex">
-            <input class="form-control" type="email"  value="{{data.email}}" [(ngModel)]="emailCustomer">
-            <button class="btn btn-sm btn-info" (click)="sentEmail(data.id)"><mat-icon>send</mat-icon></button>
+        <div *ngIf="_enableEmail" class="my-3 flex">
+            <input class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+             type="email"  value="{{data.email}}" [(ngModel)]="emailCustomer">
+            <button class="rounded-md bg-indigo-600 px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-500" (click)="sentEmail(data.id)"><mat-icon>send</mat-icon></button>
         </div>
            
     </div>

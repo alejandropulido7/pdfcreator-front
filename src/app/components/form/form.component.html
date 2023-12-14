@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <h4 class="text-base font-semibold leading-7 text-gray-900">Your information</h4>
-                <div class="mt-10 grid grid-cols-2 gap-4">
+                <div class="mt-10 grid md:grid-cols-2 gap-4">
                     <div>
                         <label for="customerName" class="block text-sm font-medium leading-6 text-gray-900">Your name</label>
                         <div class="mt-2">
@@ -57,12 +57,12 @@
                 </div>
             </div>
             
-            <div class="my-3 p-5 flex justify-center">
-                <app-signature (signature)="loadImage($event)"></app-signature>
+            <div class="my-3 p-5 flex justify-center w-auto container">
+                <app-signature class="w-auto container" (signature)="loadImage($event)"></app-signature>
             </div>
             <br>
             <div class="m-auto flex justify-center">
-                <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register agreement</button>
+                <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500">Register agreement</button>
             </div>
         </div>
     </form>

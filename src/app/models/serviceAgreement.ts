@@ -1,6 +1,7 @@
 import { Requirement } from "./requirement";
 
 export interface ServiceAgreement {
+    _id?: any;
     dateAgreement: string|null;
     customerEmail: string|null;
     customerLocation: string|null;

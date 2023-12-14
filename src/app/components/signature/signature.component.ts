@@ -71,4 +71,35 @@ export class SignatureComponent {
     // link.download = 'dibujo.png';
     // link.click();
   // }
+
+  startDrawingMobile(event: TouchEvent): void {
+    event.preventDefault();
+    const touch = event.touches[0];
+    this.drawing = true;
+    this.lastX = touch.clientX - this.canvas.nativeElement.getBoundingClientRect().left;
+    this.lastY = touch.clientY - this.canvas.nativeElement.getBoundingClientRect().top;
+  }
+
+  drawMobile(event: TouchEvent): void {
+    event.preventDefault();
+    if (!this.drawing || event.touches.length === 0) return;
+
+    const touch = event.touches[0];
+    const x = touch.clientX - this.canvas.nativeElement.getBoundingClientRect().left;
+    const y = touch.clientY - this.canvas.nativeElement.getBoundingClientRect().top;
+
+    this.context.beginPath();
+    this.context.moveTo(this.lastX, this.lastY);
+    this.context.lineTo(x, y);
+    this.context.stroke();
+
+    this.lastX = x;
+    this.lastY = y;
+  }
+
+  endDrawingMobile(): void {
+    this.drawing = false;
+    const image = this.canvas.nativeElement.toDataURL('image/png');
+    this.signature.emit(image);
+  }
 }
