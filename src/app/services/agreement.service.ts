@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalLoadingComponent } from '../components/utils/modal-loading/modal-loading.component';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ import { ModalLoadingComponent } from '../components/utils/modal-loading/modal-l
 export class AgreementService {
 
   headers: HttpHeaders = new HttpHeaders({token: this.cookies.get('token')});
-  loading: MatDialogRef<ModalLoadingComponent>
+  loading: MatDialogRef<ModalLoadingComponent>;
 
   constructor(private readonly http: HttpClient,
     private cookies: CookieService,

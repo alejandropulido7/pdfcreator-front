@@ -15,7 +15,6 @@ export class AgreementListComponent implements OnInit{
 
   ngOnInit(): void {
     this.serviceAgreement.findAllAgreements().subscribe((agreement: ServiceAgreement[]) => {
-      console.log(agreement)
       this.listAgreements = agreement.sort((a, b) => Date.parse(b.dateAgreement) - Date.parse(a.dateAgreement));
     });
   }

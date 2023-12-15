@@ -36,7 +36,8 @@ export class LoginComponent {
     }
     this.authService.login(login).subscribe((res) => {
       this.cookieService.set('token', res.token);
-      this.cookieService.set('role', res.role);
+      this.cookieService.set('user', res.role);
+      this.authService.setUserLogued(res);
       const role = this.loginForm.controls['btnRole'].value;
       if( res.role == Constants.ROLE_ADMIN){
         const path = role == Constants.ROLE_ADMIN ? 'agreements' : 'form';
@@ -54,7 +55,10 @@ export class LoginComponent {
       
     }, (error) => {
       this.dialog.open(ModalErrorComponent, {
-        data: {message: error.error.message}
+        data: {
+          title: 'Error',
+          message: 'Service not available'
+        }
       });      
     });
 

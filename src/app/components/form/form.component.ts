@@ -1,33 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { Requirement } from 'src/app/models/requirement';
 import { ServiceAgreement } from 'src/app/models/serviceAgreement';
 import { AgreementService } from 'src/app/services/agreement.service';
 import { ModalErrorComponent } from '../utils/modal-error/modal-error.component';
 import { ModalSuccessComponent } from '../utils/modal-success/modal-success.component';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent{
+export class FormComponent implements OnInit{
   requirements: Requirement[] = [];
   addRequirementError:string = '';
   signImage!: string;
-
+  userLogued:User;
   requirementsForm = new FormGroup({
     customerName: new FormControl('', Validators.required),
-    customerEmail: new FormControl('hapulido22@gmail.com'),
+    customerEmail: new FormControl(''),
     customerPhone: new FormControl(''),
     customerLocation: new FormControl('')
   });
   
   constructor(private agreementService: AgreementService, 
-    cookie: CookieService,
+    private authService: AuthService,
     private dialog: MatDialog) {  
     this.requirements.push({
       index: 0,
@@ -36,8 +36,20 @@ export class FormComponent{
       priority: '',
       buttonRemove: false
     });
-
+    
   }
+
+  ngOnInit(): void {
+      this.authService.getUserLogued().then((user) => {
+        this.userLogued = user;
+        this.requirementsForm.controls.customerName.setValue(this.userLogued.username);
+        this.requirementsForm.controls.customerEmail.setValue(this.userLogued.email);
+        this.requirementsForm.controls.customerName.disable();
+        this.requirementsForm.controls.customerEmail.disable();
+      });      
+  }
+
+  
 
   updateRequirement(requirement: Requirement){
     this.requirements[requirement.index].name = requirement.name;
