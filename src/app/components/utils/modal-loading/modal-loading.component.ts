@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -7,6 +7,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   templateUrl: './modal-loading.component.html',
   styleUrls: ['./modal-loading.component.css'],
   standalone: true,
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [MatProgressSpinnerModule],
 })
 export class ModalLoadingComponent {
