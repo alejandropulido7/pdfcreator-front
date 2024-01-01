@@ -54,7 +54,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     CookieService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: []
 })
 export class AppModule { }
