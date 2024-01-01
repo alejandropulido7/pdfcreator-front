@@ -25,6 +25,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
+    NavbarComponent,
     AppComponent,
     FormComponent,
     LoginComponent,
@@ -33,8 +34,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AgreementListComponent,
     AgreementComponent,
     ModalErrorComponent,
-    ModalSuccessComponent,
-    NavbarComponent
+    ModalSuccessComponent
   ],
   imports: [
     BrowserModule,
