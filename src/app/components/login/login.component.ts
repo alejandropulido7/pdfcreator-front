@@ -23,8 +23,8 @@ export class LoginComponent {
   btnRole!: string;
 
   loginForm = new FormGroup({
-    email: new FormControl('codingproactive@gmail.com', [Validators.email, Validators.required]),
-    password: new FormControl('pdfCreatorCoding', [Validators.required]),
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.required]),
     btnRole: new FormControl('user')
   });
 

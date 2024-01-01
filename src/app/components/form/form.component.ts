@@ -80,8 +80,8 @@ export class FormComponent implements OnInit{
 
   validateFieldsRequirement(): boolean{
     const requirement = this.requirements[this.requirements.length-1];
-    if(requirement.name == "" &&
-    requirement.description == "" &&
+    if(requirement.name == "" ||
+    requirement.description == "" ||
     requirement.priority == "" ){
       return false;
     }

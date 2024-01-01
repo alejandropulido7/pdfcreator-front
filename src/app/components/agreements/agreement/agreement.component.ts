@@ -41,7 +41,6 @@ export class AgreementComponent {
     this.serviceAgreement.renderLoading(true);
     this.serviceAgreement.sentEmail(id, this.emailCustomer).subscribe((response) => {
       this.serviceAgreement.renderLoading(false);
-      console.log(response);
       this.activateEmail = false;
       this.alert = {
         title: 'Success!',
@@ -49,7 +48,6 @@ export class AgreementComponent {
         colorAlert: 'bg-green-100'
       }
     }, (error) => {
-      console.log(error);
       this.alert = {
         title: 'Error!',
         sendMail: error,
@@ -61,7 +59,6 @@ export class AgreementComponent {
   downloadPdf(id: string){
     this.serviceAgreement.renderLoading(true);
     this.serviceAgreement.downloadPdf(id).subscribe((pdf) => {
-      console.log(pdf);
       this.serviceAgreement.renderLoading(false);
       try {
         this.alert = {

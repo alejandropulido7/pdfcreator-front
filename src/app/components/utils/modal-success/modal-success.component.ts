@@ -34,7 +34,6 @@ export class ModalSuccessComponent {
     this.serviceAgreement.renderLoading(true);
     this.serviceAgreement.sentEmail(id, this.emailCustomer).subscribe((response) => {
       this.serviceAgreement.renderLoading(false);
-      console.log(response);
       let dialogRef = this.dialog.open(ModalErrorComponent, {
         data: {
           title: 'Done!',
@@ -53,7 +52,6 @@ export class ModalSuccessComponent {
     this.dialogRefCurrent.close();
     this.serviceAgreement.renderLoading(true);
     this.serviceAgreement.downloadPdf(id).subscribe((pdf) => {
-      console.log(pdf);
       this.serviceAgreement.renderLoading(false);
       try {
         this.router.navigate(['agreements']);
