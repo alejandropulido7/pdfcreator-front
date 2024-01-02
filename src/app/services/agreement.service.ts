@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpBackend, HttpClient, HttpContext, HttpContextToken, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environment/environment';
 import { ServiceAgreement } from '../models/serviceAgreement';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalLoadingComponent } from '../components/utils/modal-loading/modal-loading.component';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
