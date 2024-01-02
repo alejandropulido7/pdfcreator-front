@@ -25,7 +25,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
-    NavbarComponent,
     AppComponent,
     FormComponent,
     LoginComponent,
@@ -34,7 +33,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AgreementListComponent,
     AgreementComponent,
     ModalErrorComponent,
-    ModalSuccessComponent
+    ModalSuccessComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +54,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     CookieService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: []
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
