@@ -1,12 +1,11 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
 
